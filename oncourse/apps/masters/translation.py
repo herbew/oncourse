@@ -1,6 +1,6 @@
 from __future__ import unicode_literals, absolute_import
 
-from oncourse.libs.contrib.modeltranslation.translator import (
+from oncourse.libs.modeltranslation.translator import (
     TranslationOptions, translator)
 
 from oncourse.apps.masters.models.courses import Course
