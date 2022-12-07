@@ -1,9 +1,9 @@
 from __future__ import unicode_literals, absolute_import
 
-from onevent.libs.contrib.modeltranslation.translator import (
+from oncourse.libs.modeltranslation.translator import (
     TranslationOptions, translator)
 
-from onevent.apps.academics.models.events import Event
+from oncourse.apps.academics.models.events import Event
 from oncourse.apps.academics.models.students.tasks_shared import StudentEventTask
 
 # events
