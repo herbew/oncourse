@@ -172,10 +172,14 @@ ____________________________________________________________________________
  python3 ./manage.py makemigrations users
  python3 ./manage.py migrate users
  
+ # Only users
  python3 ./manage.py makemigrations workbooks
  python3 ./manage.py migrate workbooks
  
+ # Only masters
  python3 ./manage.py makemigrations masters
+ python3 ./manage.py migrate masters
+ 
  python3 ./manage.py makemigrations academics
  python3 ./manage.py makemigrations
 
