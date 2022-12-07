@@ -123,7 +123,6 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'oncourse.core',
-    'oncourse.apps.locations.apps.LocationsAppConfig',
     'oncourse.apps.trails.apps.TrailsAppConfig',
     'oncourse.apps.users.apps.UsersAppConfig',
     'oncourse.apps.workbooks.apps.WorkbooksAppConfig',
