@@ -129,6 +129,8 @@ dos2unix utility/install_os_dependencies.sh
 dos2unix utility/install_python_dependencies.sh
 sudo ./utility/install_os_dependencies.sh install
 
+sudo su
+
 source envoncourse/bin/activate
 cd oncourse
 
@@ -168,6 +170,9 @@ ____________________________________________________________________________
 
  python3 ./manage.py migrate sites
  python3 ./manage.py makemigrations users
+ python3 ./manage.py makemigrations workbooks
+ python3 ./manage.py makemigrations masters
+ python3 ./manage.py makemigrations academics
  python3 ./manage.py makemigrations
 
  python3 ./manage.py migrate
