@@ -2,8 +2,8 @@
 #|          D E P L O Y M E N T   G U I D A N C E with Ubuntu 20.04
 #|==============================================================================
 
-sudo apt-get install build-essential checkinstall
-sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libpq-dev \
+sudo apt install build-essential checkinstall
+sudo apt install libreadline-gplv2-dev libncursesw5-dev libssl-dev libpq-dev \
     libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev
 
 INSTALL DATABASE
@@ -12,7 +12,7 @@ sudo wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main" > /etc/apt/sources.list.d/PostgreSQL.list'
 
 sudo apt update
-sudo apt-get install postgresql-10
+sudo apt install postgresql-10
 
 sudo -u postgres psql -c "CREATE USER uoncourse WITH ENCRYPTED PASSWORD 'PwDoncourseSatu1Dua3';"
 sudo -u postgres psql -c "CREATE DATABASE db_oncourse;"
@@ -26,11 +26,11 @@ INSTALL MONGODB
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
 sudo wget --quiet -O - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
-sudo apt-get install gnupg
+sudo apt install gnupg
 echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
-sudo apt-get update
-sudo apt-get install -y mongodb-org
-sudo apt-get install mongodb-org=4.4.4 mongodb-org-server=4.4.4 mongodb-org-shell=4.4.4 mongodb-org-mongos=4.4.4 mongodb-org-tools=4.4.4
+sudo apt update
+sudo apt install -y mongodb-org
+sudo apt install mongodb-org=4.4.4 mongodb-org-server=4.4.4 mongodb-org-shell=4.4.4 mongodb-org-mongos=4.4.4 mongodb-org-tools=4.4.4
 ps --no-headers -o comm 1
 sudo systemctl start mongod.service
 sudo systemctl daemon-reload
@@ -53,7 +53,7 @@ use db_oncourse_trails;
 db.createUser(
   {
     user: "trail_oncourse",
-    pwd: "PWDuoncourseerSatu23",
+    pwd: "PWDuoncourseSatu23",
     roles: [{ role: "readWrite", db: "db_oncourse_trails" },]
   },
 );
@@ -61,26 +61,19 @@ use db_oncourse_django_message;
 db.createUser(
   {
     user: "django_messages_oncourse",
-    pwd: "PWDuoncourseerSatu23",
+    pwd: "PWDuoncourseSatu23",
     roles: [{ role: "readWrite", db: "db_oncourse_django_messages" },]
   },
 );
 use db_trace_oncourse
 db.createUser(
   {
-    user: "uoncourseer",
-    pwd: "PWDuoncourseerSatu23",
+    user: "uoncourse",
+    pwd: "PWDuoncourseSatu23",
     roles: [{ role: "readWrite", db: "db_trace_oncourse" },]
   }
 );
-use db_oncourseer_pnjaksel
-db.createUser(
-  {
-    user: "uoncourseer",
-    pwd: "PWDuoncourseerSatu23",
-    roles: [{ role: "readWrite", db: "db_oncourseer_pnjaksel" },]
-  }
-);
+
 EOF
 
 
@@ -93,52 +86,44 @@ db.dropDatabase();
 use db_trace_oncourse
 db.dropDatabase();
 
-use db_oncourseer_pnjaksel
-db.dropDatabase();
 
 db.dropUser("trail_oncourse");
 db.dropUser("django_messages_oncourse");
-db.dropUser("uoncourseer");
+db.dropUser("uoncourse");
 
 true
 show users;
 
 
-sudo apt-get install language-pack-id
+sudo apt install language-pack-id
 sudo dpkg-reconfigure locales
 
-sudo apt-get install -y python3 python3-pip 
-sudo apt-get install -y python3-venv
+sudo apt install -y python3 python3-pip 
+sudo apt install -y python3-venv
 
 python3 -m pip install --user pipenv
 
 -----------------------------------------------------------------------
-herbew.iind@gmail.com
-
+https://github.com/
+herbew@gmail.com
 #!Kevinvania!!23
-
-https://github.com/herbewiind
-
-username : herbewiind
-password : #!Kevinvania!!23
 ----------------------------------------------------------------------
 
-git clone https://github.com/herbewiind/oncourse.git
-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
+git clone https://github.com/herbew/oncourse.git
+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
 
-git clone https://github.com/herbewiind/static.git static
-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
+
+
+# link with absolute path
+sudo ln -s /home/herbew/oncourse /opt/oncourse
+cd /opt
+sudo python3 -m venv envoncourse
   
-cp -Rf static oncourse/oncourse
-
-#sudo ln -s /opt/oncourse /opt/oncourse
-python3 -m venv envoncourse
-  
-source envoncourse/bin/activate
+source /opt/envoncourse/bin/activate
 
 
-sudo apt-get install dos2unix -y 
-cd oncourse
+sudo apt install dos2unix -y 
+cd /opt/oncourse
 
 dos2unix utility/install_os_dependencies.sh
 dos2unix utility/install_python_dependencies.sh
@@ -193,13 +178,9 @@ ____________________________________________________________________________
  python3 ./manage.py shell -c "from oncourse.apps.users.models import User; User.objects.create_superuser('herbew', 'herbew@gmail.com', 'password')"
  python3 ./manage.py shell -c "from oncourse.apps.users.models import User; user = User.objects.get(username='herbew'); user.types='001'; user.save()"
  
-# Load data
-python manage.py loaddata 001_province
-python manage.py loaddata 002_city
- 
  
 #Redis
- sudo apt install redis-server redis
+sudo apt install redis-server redis
  
  
 sudo systemctl enable redis
@@ -210,19 +191,22 @@ sudo systemctl status redis
 
 #Gunicorn
 
-assume absolute path of the source /opt/oncourseer/
-vi /opt/oncourseer/config/systemd/gunicorn/gunicorn.service
+assume absolute path of the source /home/herbew/oncourse/
+vi /home/herbew/oncourse/config/systemd/gunicorn/gunicorn.service
 user as herbew
 ____________:
 
 User=herbew
-WorkingDirectory=/opt/oncourse
-ExecStart=/opt/envoncourse/bin/gunicorn --access-logfile - --workers 3 --bind unix:/opt/herbew.sock config.wsgi:application
+WorkingDirectory=/home/herbew/oncourse
+ExecStart=/home/herbew/envoncourse/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/herbew/herbew.sock config.wsgi:application
 
 ____________
 
-
+IF LIVE:
 sudo cp -f config/systemd/gunicorn/gunicorn.service /etc/systemd/system/gunicorn.service
+
+IF LOCAL:
+sudo cp -f config/systemd/gunicorn/local-gunicorn.service /etc/systemd/system/gunicorn.service
 
 sudo systemctl enable gunicorn
 sudo systemctl start gunicorn
@@ -231,17 +215,22 @@ sudo systemctl daemon-reload
 sudo systemctl status gunicorn
 
 #RQWorker
-assume absolute path of the source /opt/oncourseer/
+assume absolute path of the source /home/herbew/oncourse/
 user as herbew
 ____________:
 
 User=herbew
-WorkingDirectory=/opt/oncourse
-ExecStart=/opt/envoncourse/bin/python3 /opt/oncourse/manage.py rqworker high default low
+WorkingDirectory=/home/herbew/oncourse
+ExecStart=/home/herbew/envoncourse/bin/python3 /home/herbew/oncourse/manage.py rqworker high default low
 
 ____________
 
+IF LIVE:
 sudo cp -f config/systemd/rqworker/rqworker.service /etc/systemd/system/rqworker.service
+
+IF LOCAL:
+sudo cp -f config/systemd/rqworker/local-rqworker.service /etc/systemd/system/rqworker.service
+
 sudo systemctl enable rqworker
 sudo systemctl start rqworker
 sudo systemctl restart rqworker
@@ -261,9 +250,9 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
 
 #NGINX
-assume absolute path of the source /opt/oncourseer/
+assume absolute path of the source /home/herbew/oncourse/
 user as herbew
-vi /opt/oncourseer/config/nginx/local-nginx.conf
+vi /home/herbew/oncourse/config/nginx/local-nginx.conf
 
 sudo apt install nginx
 
@@ -312,3 +301,7 @@ sudo systemctl restart rqworker
 
 
 sudo apt install redis-server
+
+source envoncourse/bin/activate
+cd oncourse
+python3 ./manage.py oncourse_chotot 0
