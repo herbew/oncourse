@@ -20,7 +20,7 @@ class StudentEventTask(TimeStampedModel):
     1. Task shared.
     2. Student do it.
     """
-    ordered = models.IntegerField( 
+    no = models.IntegerField( 
             _("No"))
     
     student_event = models.ForeignKey(
