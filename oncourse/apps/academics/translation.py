@@ -8,7 +8,7 @@ from oncourse.apps.academics.models.students.tasks_shared import StudentEventTas
 
 # events
 class EventTranslationOptions(TranslationOptions):
-    fields = ('name', 'date' )
+    fields = ('name', 'date_event','start_ts','end_ts' )
     
 translator.register(Event, EventTranslationOptions)
 
