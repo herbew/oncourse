@@ -5,7 +5,7 @@ from django.contrib import admin
 
 from oncourse.apps.academics.models.events import Event, StudentEvent
 from oncourse.apps.academics.models.students.tasks_shared import StudentEventTask
-from oncourse.apps.academics.models.students.answer_shared import (
+from oncourse.apps.academics.models.students.answers_shared import (
     StudentEventTaskAnswer)
 
 admin.site.register(Event)
