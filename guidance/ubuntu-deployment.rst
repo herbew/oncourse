@@ -172,6 +172,9 @@ ____________________________________________________________________________
  python3 ./manage.py makemigrations users
  python3 ./manage.py migrate users
  
+ python3 ./manage.py makemigrations avatar
+ python3 ./manage.py migrate avatar
+ 
  # Only users
  python3 ./manage.py makemigrations workbooks
  python3 ./manage.py migrate workbooks
@@ -185,10 +188,17 @@ ____________________________________________________________________________
 
  python3 ./manage.py migrate
  
+ # IF any update translation field
  python3 ./manage.py update_translation_fields users
  
  python3 ./manage.py collectstatic --noinput
+ 
+ python3 ./manage.py createsuperuser
+ 
+ herbew, herbew@gmail.com, password
+ Or
  python3 ./manage.py shell -c "from oncourse.apps.users.models import User; User.objects.create_superuser('herbew', 'herbew@gmail.com', 'password')"
+ 
  python3 ./manage.py shell -c "from oncourse.apps.users.models import User; user = User.objects.get(username='herbew'); user.types='001'; user.save()"
  
  
