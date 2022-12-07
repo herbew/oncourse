@@ -127,7 +127,7 @@ LOCAL_APPS = [
     'oncourse.apps.users.apps.UsersAppConfig',
     'oncourse.apps.workbooks.apps.WorkbooksAppConfig',
     'oncourse.apps.masters.apps.MastersAppConfig',
-    # 'oncourse.apps.academics.apps.AcademicsAppConfig',
+    'oncourse.apps.academics.apps.AcademicsAppConfig',
     'oncourse.apps.apis.apps.APIsAppConfig'
     
 ]
