@@ -184,9 +184,7 @@ ____________________________________________________________________________
  python3 ./manage.py migrate masters
  
  python3 ./manage.py makemigrations academics
- python3 ./manage.py makemigrations
-
- python3 ./manage.py migrate
+ python3 ./manage.py migrate academics
  
  # IF any update translation field
  python3 ./manage.py update_translation_fields users

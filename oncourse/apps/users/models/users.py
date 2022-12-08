@@ -127,7 +127,7 @@ def user_save(sender, instance, created, *args, **kwargs):
        return
     
     if created:
-        usert = UserTraceability.objects.get_or_creater(
+        usert = UserTraceability.objects.get_or_create(
             user=instance, defaults=dict(typed="003"))
         
 post_save.connect(user_save, sender=User)
