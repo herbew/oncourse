@@ -62,7 +62,8 @@ MONGODB_DATABASES = {
             "host": "%s:27017" % (IP_MONGODB),
             "username": "trail_oncourse", #used normal user
             "password": "PWDuoncourseerSatu23",
-            "tz_aware": True, # if you using timezones in django (USE_TZ = True)
+            "tz_aware": True, 
+            "authsource":"admin"# if you using timezones in django (USE_TZ = True)
         },
         "django_messages": {
             "name":"db_oncourse_django_messages",
@@ -70,6 +71,7 @@ MONGODB_DATABASES = {
             "username": "django_messages_oncourse", #used normal user
             "password": "PWDuoncourseerSatu23",
             "tz_aware": True, # if you using timezones in django (USE_TZ = True)
+            "authsource":"admin"# if you using timezones in django (USE_TZ = True)
         },
         
     }
