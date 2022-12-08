@@ -39,6 +39,8 @@ class Answer(TimeStampedModel):
             _("Option"), 
             max_length=1, 
             choices=TASK_OPTION_CHOICES,
+            blank=True, 
+            null=True,
             db_index=True)
     
     detailed = models.TextField(
