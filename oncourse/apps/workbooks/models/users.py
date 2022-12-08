@@ -63,7 +63,7 @@ class UserTraceability(TimeStampedModel):
         return dict(self.USER_CHOICES)[self.typed]
     
     def __str__(self):
-        return "%s - %s" % (self.user.name, self.get_typed)
+        return "%s - %s" % (self.user, self.get_typed)
     
     def get_user_update(self):
         return self._user_update

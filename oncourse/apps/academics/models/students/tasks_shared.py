@@ -45,7 +45,7 @@ class StudentEventTask(TimeStampedModel):
     class Meta:
         app_label = 'academics'
         verbose_name = u"StudentEventTask"
-        verbose_name_plural = u"003 Workbooks Student Event Task"
+        verbose_name_plural = u"003 Academics Student Event Task"
         
         unique_together = (("student_event", "task", ),)
 
@@ -54,7 +54,7 @@ class StudentEventTask(TimeStampedModel):
         self._user_update = None
     
     def __str__(self):
-        return "%s - %s" % (self.student_event, self.ordered)
+        return "%s - %s" % (self.student_event, self.no)
     
     def get_user_update(self):
         return self._user_update

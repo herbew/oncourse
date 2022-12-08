@@ -40,7 +40,7 @@ class StudentEventTaskAnswer(TimeStampedModel):
     class Meta:
         app_label = 'academics'
         verbose_name = u"StudentEventTaskAnswer"
-        verbose_name_plural = u"004 Workbooks Student Event Task Answer"
+        verbose_name_plural = u"004 Academics Student Event Task Answer"
         
         unique_together = (("student_event_task", "answer", ),)
 
