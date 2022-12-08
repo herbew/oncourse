@@ -69,7 +69,7 @@ class Answer(TimeStampedModel):
         self._user_update = None
     
     def __str__(self):
-        return self.name
+        return "%s-%s" % (self.task, self.code)
     
     def get_user_update(self):
         return self._user_update
