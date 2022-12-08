@@ -65,15 +65,6 @@ db.createUser(
     roles: [{ role: "readWrite", db: "db_oncourse_django_messages" },]
   },
 );
-use db_trace_oncourse
-db.createUser(
-  {
-    user: "uoncourse",
-    pwd: "PWDuoncourseSatu23",
-    roles: [{ role: "readWrite", db: "db_trace_oncourse" },]
-  }
-);
-
 EOF
 
 

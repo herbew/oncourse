@@ -60,14 +60,14 @@ MONGODB_DATABASES = {
         "trails": {
             "name":"db_oncourse_trails",
             "host": "%s:27017" % (IP_MONGODB),
-            "username": "uoncourse1", #used normal user
+            "username": "trail_oncourse", #used normal user
             "password": "PWDuoncourseerSatu23",
             "tz_aware": True, # if you using timezones in django (USE_TZ = True)
         },
         "django_messages": {
             "name":"db_oncourse_django_messages",
             "host": "%s:27017" % (IP_MONGODB),
-            "username": "uoncourse2", #used normal user
+            "username": "django_messages_oncourse", #used normal user
             "password": "PWDuoncourseerSatu23",
             "tz_aware": True, # if you using timezones in django (USE_TZ = True)
         },
