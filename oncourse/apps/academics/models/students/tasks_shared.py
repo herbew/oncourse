@@ -43,7 +43,7 @@ class StudentEventTask(TimeStampedModel):
             db_index=True)
 
     class Meta:
-        app_label = 'workbooks'
+        app_label = 'academics'
         verbose_name = u"StudentEventTask"
         verbose_name_plural = u"003 Workbooks Student Event Task"
         

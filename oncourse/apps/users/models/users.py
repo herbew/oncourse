@@ -121,9 +121,14 @@ class User(AbstractUser):
 
 def user_save(sender, instance, created, *args, **kwargs):
     
+    from oncourse.apps.workbooks.models.users import UserTraceability
+    
     if not isinstance(instance, User):
        return
     
+    if created:
+        usert = UserTraceability.objects.get_or_creater(
+            user=instance, defaults=dict(typed="003"))
         
 post_save.connect(user_save, sender=User)
 
