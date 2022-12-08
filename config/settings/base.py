@@ -63,7 +63,8 @@ MONGODB_DATABASES = {
             "username": "trail_oncourse", #used normal user
             "password": "PWDuoncourseerSatu23",
             "tz_aware": True, 
-            "authsource":"admin"# if you using timezones in django (USE_TZ = True)
+            'authSource': 'admin',
+            'authMechanism': 'SCRAM-SHA-1'# if you using timezones in django (USE_TZ = True)
         },
         "django_messages": {
             "name":"db_oncourse_django_messages",
@@ -71,7 +72,8 @@ MONGODB_DATABASES = {
             "username": "django_messages_oncourse", #used normal user
             "password": "PWDuoncourseerSatu23",
             "tz_aware": True, # if you using timezones in django (USE_TZ = True)
-            "authsource":"admin"# if you using timezones in django (USE_TZ = True)
+            'authSource': 'admin',
+            'authMechanism': 'SCRAM-SHA-1'
         },
         
     }
