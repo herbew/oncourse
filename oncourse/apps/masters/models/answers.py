@@ -92,18 +92,18 @@ def add_task(sender, instance, created, *args, **kwargs):
     if not isinstance(instance, Answer):
        return
     
-    if instance.detailed:
-        meta_raw_id = "%s" % instance.pk
-        ms, created = MetaSummernote.objects.get_or_create(
-                meta_user=instance.user_update,
-                meta_table=instance._meta.db_table,
-                meta_raw_id=meta_raw_id,
-                meta_field="detailed",
-                defaults=dict(
-                    meta_size=len(instance.detailed.encode('utf-8')),
-                    user_update=instance.user_update
-                    )
-                )
+    # if instance.detailed:
+    #     meta_raw_id = "%s" % instance.pk
+    #     ms, created = MetaSummernote.objects.get_or_create(
+    #             meta_user=instance.user_update,
+    #             meta_table=instance._meta.db_table,
+    #             meta_raw_id=meta_raw_id,
+    #             meta_field="detailed",
+    #             defaults=dict(
+    #                 meta_size=len(instance.detailed.encode('utf-8')),
+    #                 user_update=instance.user_update
+    #                 )
+    #             )
     
 post_save.connect(add_task, sender=Answer)
 
@@ -117,13 +117,13 @@ def delete_task(sender, instance, *args, **kwargs):
         return
     
     
-    if instance.detailed:
-        # Trail delete image summernote
-        clean_summernote_image(instance.detailed)
-        
-        # Trail delete
-        trail_summernote_user_deleted(
-            instance, 'detailed', instance.user_update)
+    # if instance.detailed:
+    #     # Trail delete image summernote
+    #     clean_summernote_image(instance.detailed)
+    #
+    #     # Trail delete
+    #     trail_summernote_user_deleted(
+    #         instance, 'detailed', instance.user_update)
 
         
 pre_delete.connect(delete_task, sender=Answer)

@@ -89,18 +89,18 @@ def add_course(sender, instance, created, *args, **kwargs):
     if not isinstance(instance, Course):
        return
     
-    if instance.description:
-        meta_raw_id = "%s" % instance.pk
-        ms, created = MetaSummernote.objects.get_or_create(
-                meta_user=instance.user_update,
-                meta_table=instance._meta.db_table,
-                meta_raw_id=meta_raw_id,
-                meta_field="description",
-                defaults=dict(
-                    meta_size=len(instance.description.encode('utf-8')),
-                    user_update=instance.user_update
-                    )
-                )
+    # if instance.description:
+    #     meta_raw_id = "%s" % instance.pk
+    #     ms, created = MetaSummernote.objects.get_or_create(
+    #             meta_user=instance.user_update,
+    #             meta_table=instance._meta.db_table,
+    #             meta_raw_id=meta_raw_id,
+    #             meta_field="description",
+    #             defaults=dict(
+    #                 meta_size=len(instance.description.encode('utf-8')),
+    #                 user_update=instance.user_update
+    #                 )
+    #             )
     
 post_save.connect(add_course, sender=Course)
 
@@ -114,13 +114,13 @@ def delete_course(sender, instance, *args, **kwargs):
         return
     
     
-    if instance.description:
-        # Trail delete image summernote
-        clean_summernote_image(instance.description)
-        
-        # Trail delete
-        trail_summernote_user_deleted(
-            instance, 'description', instance.user_update)
+    # if instance.description:
+    #     # Trail delete image summernote
+    #     clean_summernote_image(instance.description)
+    #
+    #     # Trail delete
+    #     trail_summernote_user_deleted(
+    #         instance, 'description', instance.user_update)
 
         
 pre_delete.connect(delete_course, sender=Course)
