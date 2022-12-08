@@ -447,8 +447,8 @@ EMAIL_SUBJECT_PREFIX = env('DJANGO_EMAIL_SUBJECT_PREFIX', default='[SimpleAccoun
 EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
 
 ANYMAIL = {
-    "MAILJET_API_KEY":env('MAILJET_API_KEY', default="765932303e279497d2245fc7796f602e"),
-    "MAILJET_SECRET_KEY": env('MAILJET_SECRET_KEY', default="bfccd273098b173adf4bbc2400f40e74"),
+    "MAILJET_API_KEY":env('MAILJET_API_KEY', default=""),
+    "MAILJET_SECRET_KEY": env('MAILJET_SECRET_KEY', default=""),
     }
     
 MAILJET_API_URL = "https://api.mailjet.com/v3.1/"
