@@ -105,7 +105,7 @@ class StudentEvent(TimeStampedModel):
     
       
     def __str__(self):
-        return "%s:%s - %s" % (self.course, self.user_traceability.user.name, 
+        return "%s:%s - %s" % (self.course, self.user_traceability, 
                             self.event)
     
     def get_user_update(self):
