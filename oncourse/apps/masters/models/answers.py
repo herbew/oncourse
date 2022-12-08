@@ -70,8 +70,9 @@ class Answer(TimeStampedModel):
         super(Answer, self).__init__(*args, **kwargs)
         self._user_update = None
     
+    
     def __str__(self):
-        return "%s-%s" % (self.task, self.code)
+        return "%s-%s:(%s)" % (self.task, self.code, self.is_correct)
     
     def get_user_update(self):
         return self._user_update
