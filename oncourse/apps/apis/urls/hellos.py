@@ -5,7 +5,7 @@ import logging
 from rest_framework import routers
 from django.urls import include, path
 
-from oncourse.apps.masters.views.hellos import ApiHello
+from oncourse.apps.apis.views.hellos import ApiHello
 
 log = logging.getLogger(__name__)
 

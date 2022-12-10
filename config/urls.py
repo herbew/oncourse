@@ -18,7 +18,7 @@ from allauth.account.views import password_change
 
 
 schema_url_patterns = [path('api/', include('oncourse.apps.apis.urls', namespace='api')),]
-swagger_schema_view = get_swagger_view(title='Crawler API',
+swagger_schema_view = get_swagger_view(title='Online Course API',
                                        patterns=schema_url_patterns)
 
 

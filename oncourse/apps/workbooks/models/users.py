@@ -14,7 +14,7 @@ from oncourse.apps.trails.models.summernotes import MetaSummernote
 from oncourse.apps.trails.views.summernotes import clean_summernote_image
 from oncourse.apps.trails.views.utils import trail_summernote_user_deleted
 
-from oncourse.apps.users.models import User
+from oncourse.apps.users.models.users import User
 
 
 log = logging.getLogger(__name__)

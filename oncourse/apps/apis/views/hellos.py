@@ -15,7 +15,8 @@ from rest_framework.views import APIView
 
 from rest_framework_swagger import renderers
 
-from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope, TokenHasScope
+from oauth2_provider.contrib.rest_framework import (
+    TokenHasReadWriteScope, TokenHasScope)
 
 log = logging.getLogger(__name__)
 

@@ -186,9 +186,9 @@ ____________________________________________________________________________
  
  herbew, herbew@gmail.com, password
  Or
- python3 ./manage.py shell -c "from oncourse.apps.users.models import User; User.objects.create_superuser('herbew', 'herbew@gmail.com', 'password')"
+ python3 ./manage.py shell -c "from oncourse.apps.users.models.users import User; User.objects.create_superuser('herbew', 'herbew@gmail.com', 'password')"
  
- python3 ./manage.py shell -c "from oncourse.apps.users.models import User; user = User.objects.get(username='herbew'); user.types='001'; user.save()"
+ python3 ./manage.py shell -c "from oncourse.apps.users.models.users import User; user = User.objects.get(username='herbew'); user.types='001'; user.save()"
  
  
 #Redis

@@ -11,7 +11,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 
-from oncourse.apps.users.models import User
+from oncourse.apps.users.models.users import User
 
 class MyUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):
