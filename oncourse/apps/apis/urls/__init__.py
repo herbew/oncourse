@@ -10,4 +10,4 @@ from oncourse.apps.apis.urls.users.tokens import (
 app_name = "apis"
 
 urlpatterns = hellos_urlpatterns
-# urlpatterns += users_tokens_urlpatterns
+urlpatterns += users_tokens_urlpatterns
