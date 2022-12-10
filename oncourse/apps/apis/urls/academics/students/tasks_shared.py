@@ -10,5 +10,5 @@ from oncourse.apps.apis.views.academics.students.tasks_shared import (
 log = logging.getLogger(__name__)
 
 urlpatterns = [
-     path('my/(?P<course_code>[-\w]+)/task/', StudentEventTaskList.as_view(), name='student_task'),
+     path('my/<str:course_code>/task/', StudentEventTaskList.as_view(), name='student_task'),
 ]

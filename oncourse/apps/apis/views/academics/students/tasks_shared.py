@@ -27,7 +27,7 @@ class StudentEventTaskList(generics.ListAPIView):
         
         queryset = StudentEventTask.objects.filter(
             student_event__user_traceability__user=self.request.user,
-            task__course__code=self.kwargs.get('course_code')
+            task__course__code=course_code
             ).order_by("no")
             
         return queryset
