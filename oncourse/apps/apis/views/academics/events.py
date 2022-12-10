@@ -20,10 +20,10 @@ class StudentEventList(generics.ListCreateAPIView):
     permission_classes = [AllowAny]
     
     def list(self, request):
-        x = request.user
-        
-        queryset = StudentEvent.objects.filter(
-            user_traceability__user=request.user)
+        # x = request.user
+        #
+        # queryset = StudentEvent.objects.filter(
+        #     user_traceability__user=request.user)
         
         queryset = StudentEvent.objects.all()
         
