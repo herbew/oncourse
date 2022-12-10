@@ -22,7 +22,7 @@ class AnswerSerializer(serializers.ModelSerializer):
         
         validators = [
             serializers.UniqueTogetherValidator(
-                queryset=self.model.objects.all(),
+                queryset=Answer.objects.all(),
                 fields=('task', 'code'),
                 message=_("The Answer already exists!")
             )

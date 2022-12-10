@@ -23,7 +23,7 @@ class UserTraceabilitySerializer(serializers.ModelSerializer):
         
         validators = [
             serializers.UniqueTogetherValidator(
-                queryset=self.model.objects.all(),
+                queryset=UserTraceability.objects.all(),
                 fields=('user', 'typed'),
                 message=_("User typed already exists!")
             )

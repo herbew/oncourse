@@ -23,7 +23,7 @@ class TaskSerializer(serializers.ModelSerializer):
         
         validators = [
             serializers.UniqueTogetherValidator(
-                queryset=self.model.objects.all(),
+                queryset=Task.objects.all(),
                 fields=('course', 'typed', 'name'),
                 message=_("The Task typed of Course already exists!")
             )

@@ -22,7 +22,7 @@ class EventSerializer(serializers.ModelSerializer):
         
         validators = [
             serializers.UniqueTogetherValidator(
-                queryset=self.model.objects.all(),
+                queryset=Event.objects.all(),
                 fields=('name', 'date_event'),
                 message=_("The Event already exists!")
             )
@@ -40,7 +40,7 @@ class StudentEventSerializer(serializers.ModelSerializer):
         
         validators = [
             serializers.UniqueTogetherValidator(
-                queryset=self.model.objects.all(),
+                queryset=StudentEvent.objects.all(),
                 fields=('event', 'course', 'user_traceability'),
                 message=_("The Student, Course of event already exists!")
             )
