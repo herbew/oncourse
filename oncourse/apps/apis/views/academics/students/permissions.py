@@ -12,7 +12,7 @@ class StudentPermission(permissions.BasePermission):
     Student Permission
     """
     def has_permission(self, request, view):
-        # Check UserTraceability if registered
-        approved = UserTraceability.objects.filter(user=request.user).exists()
+        # Check UserTraceability if registered with self registered
+        approved = UserTraceability.objects.filter(user=self.request.user).exists()
         
         return approved

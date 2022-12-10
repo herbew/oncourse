@@ -15,17 +15,14 @@ from oncourse.apps.academics.serializers.events import StudentEventSerializer
 log = logging.getLogger(__name__)
 
 class StudentEventList(generics.ListCreateAPIView):
-    """Get Event base student(UserTraceAbility(user))"""
+    """Get Event base student(UserTraceAbility(user))
+    """
     serializer_class = StudentEventSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [AllowAny, StudentPermission]
     
     def list(self, request):
-        # x = request.user
-        #
-        # queryset = StudentEvent.objects.filter(
-        #     user_traceability__user=request.user)
-        
-        queryset = StudentEvent.objects.all()
+        queryset = StudentEvent.objects.filter(
+            user_traceability__user=self.request.user)
         
         serializer = StudentEventSerializer(queryset,many=True)
         return Response(serializer.data)
