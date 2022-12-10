@@ -462,12 +462,12 @@ MAILJET_API_URL = "https://api.mailjet.com/v3.1/"
 # ==============================================================================
 # Google configuration
 # https://pypi.org/project/django-rest-framework-social-oauth2/
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
-        'rest_framework_social_oauth2.authentication.SocialAuthentication',
-    ),
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+#         'rest_framework_social_oauth2.authentication.SocialAuthentication',
+#     ),
+# }
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ""
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ""
@@ -538,9 +538,9 @@ RQ = {
 
 REST_FRAMEWORK = {
     
-    # 'DEFAULT_PERMISSION_CLASSES': (
-    #     'rest_framework.permissions.IsAuthenticated',
-    # ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
     #
     # 'DEFAULT_AUTHENTICATION_CLASSES': (
     #     'oauth2_provider.contrib.rest_framework.OAuth2Authentication',

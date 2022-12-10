@@ -4,7 +4,7 @@ import logging
 
 from rest_framework import generics
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticated
 
 from oncourse.apps.academics.models.events import Event, StudentEvent
 from oncourse.apps.apis.views.academics.students.permissions import(
@@ -18,7 +18,7 @@ class StudentEventList(generics.ListAPIView):
     """Get Event base student(UserTraceAbility(user))
     """
     serializer_class = StudentEventSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     
     def get_queryset(self):
         
