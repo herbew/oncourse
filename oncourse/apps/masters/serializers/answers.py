@@ -18,7 +18,7 @@ class AnswerSerializer(serializers.ModelSerializer):
     option = serializers.ChoiceField(choices=Answer.TASK_OPTION_CHOICES)
     class Meta:
         model = Answer
-        fields = ['task', 'code', 'option', 'detailed']
+        fields = ['id', 'option', 'detailed']
         
         validators = [
             serializers.UniqueTogetherValidator(
