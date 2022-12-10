@@ -2,7 +2,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from oncourse.apps.apis.urls.hellos import urlpatterns as hellos_urlpatterns
-from oncourse.apps.apis.urls.students.tokens import (
+from oncourse.apps.apis.urls.users.tokens import (
     urlpattersns as users_tokens_urlpatterns)
 
 
