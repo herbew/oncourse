@@ -21,11 +21,13 @@ class StudentEventTaskList(generics.ListAPIView):
     serializer_class = StudentEventTaskSerializer
     permission_classes = [IsAuthenticated,StudentPermission]
     
+    lookup_url_kwarg = "course_code"
+    
     def get_queryset(self):
         
         queryset = StudentEventTask.objects.filter(
             student_event__user_traceability__user=self.request.user,
-            task__course__code=self.kwargs.get('code')
+            task__course__code=self.kwargs.get('course_code')
             ).order_by("no")
             
         return queryset
