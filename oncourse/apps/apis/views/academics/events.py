@@ -18,7 +18,7 @@ class StudentEventList(generics.ListCreateAPIView):
     """Get Event base student(UserTraceAbility(user))
     """
     serializer_class = StudentEventSerializer
-    permission_classes = [AllowAny, StudentPermission]
+    permission_classes = [AllowAny]
     
     def list(self, request):
         queryset = StudentEvent.objects.filter(
