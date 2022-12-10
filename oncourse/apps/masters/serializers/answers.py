@@ -14,7 +14,6 @@ from oncourse.apps.masters.models.answers import Answer
 log = logging.getLogger(__name__)
 
 class AnswerSerializer(serializers.ModelSerializer):
-    task = TaskSerializer(required=True)
     option = serializers.ChoiceField(choices=Answer.TASK_OPTION_CHOICES)
     class Meta:
         model = Answer
