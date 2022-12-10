@@ -23,7 +23,7 @@ class StudentEventTaskSerializer(serializers.ModelSerializer):
     answers = serializers.SerializerMethodField()
     
     def get_answers(self, task):
-        qs = Answer.objects.filter(task__id=task.id)
+        qs = Answer.objects.filter(task__id=task.id).order_by("option")
         serializer = AnswerSerializer(instance=qs, many=True)
         return serializer.data
     
