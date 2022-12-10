@@ -25,7 +25,7 @@ class StudentEventTaskAnswerSerializer(serializers.ModelSerializer):
         
         validators = [
             serializers.UniqueTogetherValidator(
-                queryset=self.model.objects.all(),
+                queryset=StudentEventTaskAnswer.objects.all(),
                 fields=('student_event_task', 'answer' ),
                 message=_("The Answer, of Task already exists!")
             )
