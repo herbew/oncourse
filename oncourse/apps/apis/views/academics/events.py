@@ -21,8 +21,11 @@ class StudentEventList(generics.ListCreateAPIView):
     permission_classes = [AllowAny]
     
     def list(self, request):
+        
+        username = self.request.query_params.get('username')
+        
         queryset = StudentEvent.objects.filter(
-            user_traceability__user=self.request.user)
+            user_traceability__user__username=username)
         
         serializer = StudentEventSerializer(queryset,many=True)
         return Response(serializer.data)
