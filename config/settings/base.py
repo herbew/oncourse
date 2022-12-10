@@ -577,6 +577,7 @@ REST_FRAMEWORK = {
     
 }
 
+APPEND_SLASH=False
 # SWAGGER_SETTINGS = {
 #     'SECURITY_DEFINITIONS': {
 #         'basic': {
@@ -642,19 +643,7 @@ LOGGING = {
             'propagate': False,
         },
         
-        'oncourse.apps.locations.apps.LocationsAppConfig': {
-            'handlers': ['console', 'logfile'],
-            'level':'DEBUG',
-        
-        }, 
-
         'oncourse.apps.masters.apps.MastersAppConfig': {
-            'handlers': ['console', 'logfile'],
-            'level':'DEBUG',
-        
-        },
-        
-        'oncourse.apps.scrapers.apps.ScrapersAppConfig': {
             'handlers': ['console', 'logfile'],
             'level':'DEBUG',
         
@@ -671,6 +660,25 @@ LOGGING = {
             'level':'DEBUG',
         
         },
+        
+        'oncourse.apps.apis.apps.APIsAppConfig': {
+            'handlers': ['console', 'logfile'],
+            'level':'DEBUG',
+        
+        },
+        
+        'oncourse.apps.academics.apps.AcademicsAppConfig': {
+            'handlers': ['console', 'logfile'],
+            'level':'DEBUG',
+        
+        },
+        
+        'oncourse.apps.workbooks.apps.WorkbooksAppConfig': {
+            'handlers': ['console', 'logfile'],
+            'level':'DEBUG',
+        
+        },
+        
         
     }
 }
