@@ -20,7 +20,7 @@ log = logging.getLogger(__name__)
 class StudentEventTaskSerializer(serializers.ModelSerializer):
     student_event = StudentEventSerializer(required=True)
     task = TaskSerializer(required=True)
-    answers = serializers.SerializerMethodField(required=True)
+    answers = serializers.SerializerMethodField()
     
     def get_answers(self, task):
         qs = Answer.objects.filter(task__id=task.id)
