@@ -44,7 +44,7 @@ class StudentEventTaskAnswerAPIView(views.APIView):
     ..............}
             
     """
-    parser_classes = [JSONParser]
+    parser_classes = [MultiPartParser,FormParser,JSONParser]
     permission_classes = [
                 permissions.IsAuthenticated, 
                 StudentPermission
