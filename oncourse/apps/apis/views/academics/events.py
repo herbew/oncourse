@@ -15,7 +15,22 @@ from oncourse.apps.academics.serializers.events import StudentEventSerializer
 log = logging.getLogger(__name__)
 
 class StudentEventList(generics.ListAPIView):
-    """Get Event base student(UserTraceAbility(user))
+    """
+    URL:
+    ..... http://<domain/ip>en-us/api/my/event/
+           
+    method: GET
+        
+    Authorized :
+    ..... Basic Auth(username, password)
+            
+    Return:
+    .... - IF error(JSON(content, status))
+    .... - JSON(serializer(StudentEventSerializer), status=200)
+    .
+    .
+    .
+            
     """
     serializer_class = StudentEventSerializer
     permission_classes = [IsAuthenticated,StudentPermission]

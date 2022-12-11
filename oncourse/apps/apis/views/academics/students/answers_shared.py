@@ -42,6 +42,13 @@ class StudentEventTaskAnswerAPIView(views.APIView):
     .................."answer__id":<int>
     .................."option":None<Single Choice>, 0<unthik>, 1<thik>
     ..............}
+    
+    Return:
+    .... - IF error(JSON(content, status))
+    .... - JSON(serializer(StudentEventTaskAnswerSerializer), status=200)
+    .
+    .
+    .
             
     """
     parser_classes = [MultiPartParser,FormParser,JSONParser]
