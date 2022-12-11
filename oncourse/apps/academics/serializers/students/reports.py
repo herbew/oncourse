@@ -37,7 +37,7 @@ class MyTaskSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Task
-        fields = ['course', 'id', 'name', 'typed', 'detailed']
+        fields = ['course', 'id', 'name', 'typed', 'detailed','answers']
         
 
 class MyTaskAnswerSerializer(serializers.ModelSerializer):
@@ -46,7 +46,7 @@ class MyTaskAnswerSerializer(serializers.ModelSerializer):
     my_score = serializers.SerializerMethodField()
     
     def get_my_task(self, obj):
-        serializer = MyTaskSerializer(instance=obj.student_event_task.task, many=True)
+        serializer = MyTaskSerializer(instance=obj.student_event_task.task)
         return serializer.data
     
     def get_my_answers(self, obj):
