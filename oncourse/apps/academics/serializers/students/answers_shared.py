@@ -19,9 +19,9 @@ log = logging.getLogger(__name__)
 class StudentEventTaskAnswerSerializer(serializers.ModelSerializer):
     student_event_task = StudentEventTaskSerializer(required=True)
     
-    answers = serializers.SerializerMethodField()
+    answers_selected = serializers.SerializerMethodField()
     
-    def get_answers(self, obj):
+    def get_answers_selected(self, obj):
         answer_id_list = [seta.answer.id for seta in 
             StudentEventTaskAnswer.objects.filter(student_event_task = 
             obj.student_event_task)]
@@ -32,7 +32,7 @@ class StudentEventTaskAnswerSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = StudentEventTaskAnswer
-        fields = ['student_event_task', 'answers' ]
+        fields = ['student_event_task', 'answers_selected' ]
         
         validators = [
             serializers.UniqueTogetherValidator(
