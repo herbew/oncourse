@@ -11,7 +11,7 @@ from oncourse.apps.academics.models.students.answers_shared import (
     StudentEventTaskAnswer)
 
 from oncourse.apps.masters.serializers.answers import AnswerSerializer
-from oncourse.apps.academics.serializers.students.task_shared import StudentEventTaskSerializer
+from oncourse.apps.academics.serializers.students.tasks_shared import StudentEventTaskSerializer
 
 log = logging.getLogger(__name__)
 
