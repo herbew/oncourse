@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
 
+from oncourse.apps.masters.models.answers import Answer
 from oncourse.apps.academics.models.students.answers_shared import (
     StudentEventTaskAnswer)
 
