@@ -18,6 +18,8 @@ from oncourse.apps.academics.models.students.tasks_shared import StudentEventTas
 
 from oncourse.apps.academics.models.students.answers_shared import (
     StudentEventTaskAnswer)
+from oncourse.apps.academics.serializer.students.answers_shared import (
+    StudentEventTaskAnswerSerializer)
 
 log = logging.getLogger(__name__)
 
@@ -38,6 +40,7 @@ class StudentEventTaskAnswerAPIView(views.APIView):
     ..............{
     .................."student_event_task__id": <int>,
     .................."answer__id":<int>
+    .................."option":None<Single Choice>, 0<unthik>, 1<thik>
     ..............}
             
     """
@@ -55,6 +58,7 @@ class StudentEventTaskAnswerAPIView(views.APIView):
         if data:
             student_event_task__id = data['student_event_task__id']
             answer__id = data['answer__id']
+            option = data['option']
             
             try:
                 student_event_task = StudentEventTask.objects.get(
@@ -70,17 +74,58 @@ class StudentEventTaskAnswerAPIView(views.APIView):
                 return Response(
                     _("No Data of answer__id!"), 
                     status=status.HTTP_400_BAD_REQUEST) 
-                
-                
-            seta, created = StudentEventTaskAnswer.objects.get_or_create(
-                    student_event_task=student_event_task,
-                    answer=answer
-                )
             
-            seta.user_updated = self.request.user.username
-            seta.save()
+            # Get task typed,
+            # TASK_TYPE_CHOICES = (
+            #    ('01', _('Single-choice')),
+            #    ('02', _('Multiple-choice')),
+            # )
+            typed_task = student_event_task.task.typed
             
-            return Response(data, status=200)
+            if typed_task == "02" and option in ('0',0):
+                # Multiple Choice Cancel
+                seta, created = StudentEventTaskAnswer.objects.get_or_create(
+                        student_event_task=student_event_task,
+                        answer=answer
+                    )
+                # Remove/Canceled
+                seta.delete()
+                
+            elif typed_task == "02" and option in ('1',1):
+                # Multiple Choice ADD
+                seta, created = StudentEventTaskAnswer.objects.get_or_create(
+                        student_event_task=student_event_task,
+                        answer=answer
+                    )
+                seta.user_updated = self.request.user.username
+                seta.save()
+                
+            else:
+                try:
+                    # Update answer
+                    seta = StudentEventTaskAnswer.objects.get(
+                        student_event_task=student_event_task)
+                    seta.answer = answer
+                    seta.user_updated = self.request.user.username
+                    seta.save()
+                    
+                except:
+                    # Create Single Choice
+                    seta, created = StudentEventTaskAnswer.objects.get_or_create(
+                        student_event_task=student_event_task,
+                        answer=answer
+                    )
+                
+                    seta.user_updated = self.request.user.username
+                    seta.save()
+            
+            # Display Answer
+            qs = StudentEventTaskAnswer.objects.filter(
+                student_event_task=student_event_task)
+            
+            serializer = AnswerSerializer(instance=qs, many=True)
+            
+            return Response(serializer.data, status=200)
         
         else:
             return Response(

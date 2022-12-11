@@ -17,11 +17,23 @@ log = logging.getLogger(__name__)
 
 class StudentEventTaskAnswerSerializer(serializers.ModelSerializer):
     student_event_task = StudentEventTaskSerializer(required=True)
+    
+    answers = serializers.SerializerMethodField()
+    
+    def get_answers(self, obj):
+        answer_id_list = [seta.answer.id for seta in 
+            StudentEventTaskAnswerAnswer.objects.filter(student_event_task = 
+            obj.student_event_task)]
+        
+        qs = Answer.objects.filter(id__in=answer_id_list).order_by("option")
+        serializer = AnswerSerializer(instance=qs, many=True)
+        return serializer.data
+    
     answer = AnswerSerializer(required=True)
     
     class Meta:
         model = StudentEventTaskAnswer
-        fields = ['student_event_task', 'answer' ]
+        fields = ['student_event_task', 'answers' ]
         
         validators = [
             serializers.UniqueTogetherValidator(

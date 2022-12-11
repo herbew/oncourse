@@ -30,6 +30,7 @@ class StudentEventTaskAnswer(TimeStampedModel):
         Answer,
         on_delete=models.CASCADE,
         verbose_name=_("Answer"),
+        blank=True, null=True,
         db_index=True)
     
     user_update = models.CharField(
