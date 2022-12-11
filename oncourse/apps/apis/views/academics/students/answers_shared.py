@@ -123,7 +123,7 @@ class StudentEventTaskAnswerAPIView(views.APIView):
             qs = StudentEventTaskAnswer.objects.filter(
                 student_event_task=student_event_task)
             
-            serializer = AnswerSerializer(instance=qs, many=True)
+            serializer = StudentEventTaskAnswerSerializer(instance=qs, many=True)
             
             return Response(serializer.data, status=200)
         
