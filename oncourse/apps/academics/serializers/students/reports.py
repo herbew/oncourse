@@ -22,6 +22,10 @@ from oncourse.apps.masters.serializers.answers import AnswerSerializer
 
 log = logging.getLogger(__name__)
 
+class MyScore:
+    def __init__(self, score=0):
+        self.score = score
+
 class MyScoreSerializer(serializers.Serializer):
     score = serializers.IntegerField(default=0)
 
@@ -69,8 +73,8 @@ class MyTaskAnswerSerializer(serializers.ModelSerializer):
             obj.student_event_task):
             if seta.answer.id in answer_id_correct:
                 score += seta.student_event_task.score
-            
-        serializer = MyScoreSerializer(data=dict(score=score), many=True)
+        
+        serializer = MyScoreSerializer(MyScore(score=score))
         return serializer.data
     
     class Meta:
