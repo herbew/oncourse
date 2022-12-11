@@ -71,7 +71,7 @@ class MyTaskAnswerSerializer(serializers.ModelSerializer):
         score = 0
         for seta in StudentEventTaskAnswer.objects.filter(student_event_task = 
             obj.student_event_task):
-            if seta.answer.id in answer_id_correct:
+            if seta.answer.id in answer_id_correct and score <= 0:
                 score += seta.student_event_task.score
         
         serializer = MyScoreSerializer(MyScore(score=score))
