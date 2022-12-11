@@ -29,8 +29,6 @@ class StudentEventTaskAnswerSerializer(serializers.ModelSerializer):
         serializer = AnswerSerializer(instance=qs, many=True)
         return serializer.data
     
-    answer = AnswerSerializer(required=True)
-    
     class Meta:
         model = StudentEventTaskAnswer
         fields = ['student_event_task', 'answers' ]
