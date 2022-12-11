@@ -1,6 +1,6 @@
-#|==============================================================================
-#|          D E P L O Y M E N T   G U I D A N C E with Ubuntu 20.04
-#|==============================================================================
+==============================================================================
+          D E P L O Y M E N T -- G U I D A N C E -- with Ubuntu 20.04
+==============================================================================
 
 sudo apt install build-essential checkinstall
 sudo apt install libreadline-gplv2-dev libncursesw5-dev libssl-dev libpq-dev \
