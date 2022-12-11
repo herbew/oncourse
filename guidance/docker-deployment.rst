@@ -34,13 +34,7 @@
 
 
 # 2. DONWNLOAD REPOSITORY
-	git clone https://github.com/herbewiind/oncourse.git
-	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
-	
-	git clone https://github.com/herbewiind/static.git static
-	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
-	  
-	cp -Rf static oncourse/oncourse
+	git clone https://github.com/herbew/oncourse.git
 	
 	cd oncourse/
 

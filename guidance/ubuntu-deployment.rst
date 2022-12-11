@@ -94,16 +94,7 @@ sudo apt install -y python3-venv
 
 python3 -m pip install --user pipenv
 
------------------------------------------------------------------------
-https://github.com/
-herbew@gmail.com
-#!Kevinvania!!23
-----------------------------------------------------------------------
-
 git clone https://github.com/herbew/oncourse.git
-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
-
-
 
 # link with absolute path
 sudo ln -s /home/herbew/oncourse /opt/oncourse
