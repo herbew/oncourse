@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from rest_framework import serializers
 
 from oncourse.apps.academics.models.students.answers_shared import (
-    StudentEventTaskAnswerAnswer)
+    StudentEventTaskAnswer)
 
 from oncourse.apps.masters.serializers.answers import AnswerSerializer
 from oncourse.apps.academics.serializers.students.task_shared import StudentEventTaskSerializer
@@ -22,7 +22,7 @@ class StudentEventTaskAnswerSerializer(serializers.ModelSerializer):
     
     def get_answers(self, obj):
         answer_id_list = [seta.answer.id for seta in 
-            StudentEventTaskAnswerAnswer.objects.filter(student_event_task = 
+            StudentEventTaskAnswer.objects.filter(student_event_task = 
             obj.student_event_task)]
         
         qs = Answer.objects.filter(id__in=answer_id_list).order_by("option")
