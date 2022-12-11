@@ -94,7 +94,8 @@ class ReportStudentSerializer(serializers.ModelSerializer):
     def get_my_tasks(self, obj):
         qs = StudentEventTaskAnswer.objects.filter(
             student_event_task__student_event=obj
-            ).order_by("event__start_ts", "course__order_no")
+            ).order_by("student_event__event__start_ts", 
+                       "student_event__course__order_no")
         
         serializer = MyTaskAnswerSerializer(instance=qs, many=True)
         return serializer.data
