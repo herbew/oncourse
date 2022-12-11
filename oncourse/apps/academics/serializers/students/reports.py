@@ -60,7 +60,7 @@ class MyTaskAnswerSerializer(serializers.ModelSerializer):
     
     def get_my_score(self, obj):
         # answer correct id
-        task = seta.student_event_task.task
+        task = obj.student_event_task.task
         answer_id_correct = [answer.id for answer in Answer.objects.filter(
                 task=task, is_correct=True)]
         
