@@ -12,6 +12,11 @@ from oncourse.apps.apis.urls.academics.events import (
 from oncourse.apps.apis.urls.academics.students.tasks_shared import (
     urlpatterns as academics_students_tasks_shared_urlpatterns
     )
+
+from oncourse.apps.apis.urls.academics.students.tasks_shared import (
+    urlpatterns as academics_students_tasks_shared_urlpatterns
+    )
+
 app_name = "apis"
 
 urlpatterns = hellos_urlpatterns
