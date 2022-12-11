@@ -63,16 +63,25 @@ class MyTaskAnswerSerializer(serializers.ModelSerializer):
         return serializer.data
     
     def get_my_score(self, obj):
-        # answer correct id
+        
+        # Score task shared
+        score = obj.student_event_task.score
+        
+        # Answer correct id
         task = obj.student_event_task.task
         answer_id_correct = [answer.id for answer in Answer.objects.filter(
                 task=task, is_correct=True)]
         
-        score = 0
-        for seta in StudentEventTaskAnswer.objects.filter(student_event_task = 
-            obj.student_event_task):
-            if seta.answer.id in answer_id_correct and score <= 0:
-                score += seta.student_event_task.score
+        # Student Answer
+        answered_id_list = [seta.answer.id for seta in 
+            StudentEventTaskAnswer.objects.filter(student_event_task = 
+            obj.student_event_task)]
+        
+        # Check
+        for id_correct in answer_id_correct:
+            if not id_correct in answered_id_list:    
+                score = 0    
+                break
         
         serializer = MyScoreSerializer(MyScore(score=score))
         return serializer.data
