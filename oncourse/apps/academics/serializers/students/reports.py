@@ -91,7 +91,7 @@ class ReportStudentSerializer(serializers.ModelSerializer):
         serializer = EventSerializer(instance=obj.event)
         return serializer.data
         
-    def get_my_task(self, obj):
+    def get_my_tasks(self, obj):
         qs = StudentEventTaskAnswer.objects.filter(
             student_event_task__student_event=obj
             ).order_by("event__start_ts", "course__order_no")
